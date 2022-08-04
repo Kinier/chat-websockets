@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { w3cwebsocket as websocket } from 'websocket'
+import { w3cwebsocket as Websocket } from 'websocket'
 import Chat from "./Chat"
-const clientSocket = new websocket("ws://localhost:5000")
+const clientSocket = new Websocket("ws://localhost:5000")
 function Socket({ username: username, myMessage: myMessage, setMyMessage: setMyMessage, myAction: myAction }) {
 
     const [isConnected, setIsConnected] = useState(false)
@@ -12,8 +12,9 @@ function Socket({ username: username, myMessage: myMessage, setMyMessage: setMyM
     }, [messages])
 
     const handleMyMessageInput = (e) => {
-        setMyMessage(e.target.value)
+            setMyMessage(e.target.value)
     }
+
 
     const handleEnterInput = (e) => {
         if (e.key === "Enter") {
@@ -104,7 +105,10 @@ function Socket({ username: username, myMessage: myMessage, setMyMessage: setMyM
 
 
             <h1>
-                {isConnected ? "Подключен" : "Не подключен к серверу"}
+                {isConnected
+                    ? "Подключен"
+                    : "Не подключен к серверу"
+                }
             </h1>
 
             <div className="flex w-5/6 flex-row justify-around">
@@ -115,30 +119,6 @@ function Socket({ username: username, myMessage: myMessage, setMyMessage: setMyM
             </div>
 
 
-
-
-
-
-
-
-
-
-
-            {/* <button type="button" onClick={()=>sendMyDataToServer()} classNameName=" justify-center text-xl
-            text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl 
-            focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg 
-             px-5 py-2.5 text-center mr-2 mb-2 flex">Отправить</button>
-            <div classNameName="choices flex flex-row flex-wrap w-6/6 justify-between">
-            <button onClick={()=>setMyData({...myData, "mySign": "Scissors"})} classNameName="flex w-2/6 h-96 bg-contain bg-no-repeat bg-center
-            transition ease-in-out delay-10  hover:-translate-y-1 hover:scale-110 duration-300" 
-            style={{backgroundImage: `url('${Scissor}')`}}></button>
-            <button onClick={()=>setMyData({...myData, "mySign": "Paper"})} classNameName="flex w-2/6 h-96 bg-contain bg-no-repeat bg-center
-            transition ease-in-out delay-10  hover:-translate-y-1 hover:scale-110 duration-300"
-            style={{backgroundImage: `url('${Paper}')`}}></button>
-            <button onClick={()=>setMyData({...myData, "mySign": "Rock"})} classNameName="flex w-2/6 h-96 bg-contain bg-no-repeat bg-center
-            transition ease-in-out delay-10  hover:-translate-y-1 hover:scale-110 duration-300" 
-            style={{backgroundImage: `url('${Stone}')`}}></button>
-            </div> */}
         </div>
     )
 }
