@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.username_change_need {
+    border-width: 2px;
+        
+    animation-name: alert;
+    animation-duration: 1s;
+    animation-iteration-count: 5;
+}
+
+
+@keyframes alert {
+    from {
+        border-color: blue;
+    }
+
+    to {
+        border-color: red;
+    }
+}
